@@ -21,7 +21,7 @@ class Testing(unittest.TestCase):
 
         self.assertEqual(should_value, is_value)
 
-    def test_sum_of_valid_games(self):
+    def test_sum_of_test_game_file(self):
         filename = "inputs/puzzle1-test-input"
         should_value = 8
 
