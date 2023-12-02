@@ -1,6 +1,12 @@
 import re
 
 class CubePossible():
+    VALID_GAME_CRITERIA = {
+        "red": 12,
+        "green": 13,
+        "blue": 14
+    }
+
     def cleanup_line(self, line):
         # remove the game and its id
         line = re.sub('^Game\s(\d+):\s', '', line)
@@ -27,3 +33,21 @@ class CubePossible():
 
         # not a valid line
         return None
+
+    def is_game_valid(self, line):
+        sets_array = self.extract_sets(line)
+
+        for color, max_value in self.VALID_GAME_CRITERIA.items():
+            print(f"testing {color} for {max_value}")
+
+            pattern = f"(\d+){color}"
+
+            for set in sets_array:
+                print(f"checking set {set}")
+                content_array = re.match(pattern, set)
+                if content_array:
+                    print(f"found data {content_array.group(1)}")
+                    if (int(content_array.group(1)) > self.VALID_GAME_CRITERIA[color]):
+                        print("game not valid")
+                        return False
+        return True
