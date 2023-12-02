@@ -82,3 +82,11 @@ class CubePossible():
         # print(color_max)
         return color_max["red"] * color_max["green"] * color_max["blue"]
 
+    def powersum_of_games_from_file(self, filename):
+        powersum = 0
+        with open(filename) as f:
+            for line in f:
+                game_power = self.get_power_of_a_game(line)
+                powersum += game_power
+
+        return powersum

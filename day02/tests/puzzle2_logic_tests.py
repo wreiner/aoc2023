@@ -12,5 +12,23 @@ class Testing(unittest.TestCase):
 
         self.assertEqual(should_value, is_value)
 
+    def test_powersum_of_test_game_file(self):
+        filename = "inputs/puzzle2-test-input"
+        should_value = 2286
+
+        cubepossible = CubePossible()
+        is_value = cubepossible.powersum_of_games_from_file(filename)
+
+        self.assertEqual(should_value, is_value)
+
+    def test_powersum_of_complete_game_file(self):
+        filename = "inputs/puzzle2-complete-input"
+        should_value = 63700
+
+        cubepossible = CubePossible()
+        is_value = cubepossible.powersum_of_games_from_file(filename)
+
+        self.assertEqual(should_value, is_value)
+
 if __name__ == '__main__':
     unittest.main()
