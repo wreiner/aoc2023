@@ -48,7 +48,7 @@ class CubePossible():
                 content_array = re.search(pattern, set)
                 if content_array:
                     # print(f"found data {content_array.group(1)}")
-                    if (int(content_array.group(1)) > self.VALID_GAME_CRITERIA[color]):
+                    if (int(content_array.group(1)) > max_value):
                         # print("game not valid")
                         return False
 
@@ -62,3 +62,23 @@ class CubePossible():
                 if (self.is_game_valid(line)):
                     sum += game_id
         return sum
+
+    def get_power_of_a_game(self, line):
+        color_max = {"red": 0, "green": 0, "blue": 0}
+        sets_array = self.extract_sets(line)
+        for color in self.VALID_GAME_CRITERIA.keys():
+            # print(f"looking for color {color}")
+
+            pattern = f"(\d+){color}"
+
+            for set in sets_array:
+                # print("")
+                # print(f"checking set {set} for {pattern}")
+                content_array = re.search(pattern, set)
+                if content_array:
+                    if (int(content_array.group(1)) > color_max[color]):
+                        color_max[color] = int(content_array.group(1))
+
+        # print(color_max)
+        return color_max["red"] * color_max["green"] * color_max["blue"]
+
