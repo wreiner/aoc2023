@@ -38,16 +38,27 @@ class CubePossible():
         sets_array = self.extract_sets(line)
 
         for color, max_value in self.VALID_GAME_CRITERIA.items():
-            print(f"testing {color} for {max_value}")
+            # print(f"testing {color} for {max_value}")
 
             pattern = f"(\d+){color}"
 
             for set in sets_array:
-                print(f"checking set {set}")
-                content_array = re.match(pattern, set)
+                # print("")
+                # print(f"checking set {set} for {pattern}")
+                content_array = re.search(pattern, set)
                 if content_array:
-                    print(f"found data {content_array.group(1)}")
+                    # print(f"found data {content_array.group(1)}")
                     if (int(content_array.group(1)) > self.VALID_GAME_CRITERIA[color]):
-                        print("game not valid")
+                        # print("game not valid")
                         return False
+
         return True
+
+    def sum_of_games_from_file(self, filename):
+        sum = 0
+        with open(filename) as f:
+            for line in f:
+                game_id = self.get_game_id(line)
+                if (self.is_game_valid(line)):
+                    sum += game_id
+        return sum

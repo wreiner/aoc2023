@@ -21,6 +21,14 @@ class Testing(unittest.TestCase):
 
         self.assertEqual(should_value, is_value)
 
+    def test_sum_of_valid_games(self):
+        filename = "inputs/puzzle1-test-input"
+        should_value = 8
+
+        cubepossible = CubePossible()
+        is_value = cubepossible.sum_of_games_from_file(filename)
+
+        self.assertEqual(should_value, is_value)
 
 if __name__ == '__main__':
     unittest.main()
