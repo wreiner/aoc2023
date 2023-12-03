@@ -39,7 +39,7 @@ class Testing(unittest.TestCase):
 
         enginetrouble = EngineTrouble()
         enginetrouble.parse_line(0, line)
-        is_value =  enginetrouble.get_back_adjacent()
+        is_value = enginetrouble.get_back_adjacent()
 
         self.assertEqual(should_value, is_value)
 
@@ -49,7 +49,17 @@ class Testing(unittest.TestCase):
 
         enginetrouble = EngineTrouble()
         enginetrouble.parse_line(0, line)
-        is_value =  enginetrouble.get_back_adjacent()
+        is_value = enginetrouble.get_back_adjacent()
+
+        self.assertEqual(should_value, is_value)
+
+    def test_mixed_adjacent(self):
+        line = "..37#...*4"
+        should_value = 41
+
+        enginetrouble = EngineTrouble()
+        enginetrouble.parse_line(0, line)
+        is_value = enginetrouble.get_front_adjacent()
 
         self.assertEqual(should_value, is_value)
 
