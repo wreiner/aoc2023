@@ -1,3 +1,5 @@
+import re
+
 class EngineTrouble:
     symbols = {}
     numbers = []
@@ -70,6 +72,6 @@ class EngineTrouble:
 
         return self.sum
 
-    def get_back_adjecent(self):
+    def get_back_adjacent(self):
         return self.sum
 

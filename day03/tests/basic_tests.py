@@ -3,7 +3,6 @@ import unittest
 from enginetrouble import EngineTrouble
 
 class Testing(unittest.TestCase):
-
     def test_single_front_adjacent(self):
         line = "..#38.."
         should_value = 38
@@ -11,6 +10,16 @@ class Testing(unittest.TestCase):
         enginetrouble = EngineTrouble()
         enginetrouble.parse_line(0, line)
         is_value =  enginetrouble.get_front_adjacent()
+
+        self.assertEqual(should_value, is_value)
+
+    def test_single_back_adjacent(self):
+        line = "..39#.."
+        should_value = 39
+
+        enginetrouble = EngineTrouble()
+        enginetrouble.parse_line(0, line)
+        is_value =  enginetrouble.get_back_adjacent()
 
         self.assertEqual(should_value, is_value)
 
