@@ -53,6 +53,10 @@ class EngineTrouble:
                         "end": -1
                     }
 
+        # add stragglers
+        number["end"] = col
+        self.numbers.append(number)
+
     def get_front_adjacent(self):
         print(self.symbols)
         print(self.numbers)
