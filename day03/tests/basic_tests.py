@@ -33,5 +33,15 @@ class Testing(unittest.TestCase):
 
         self.assertEqual(should_value, is_value)
 
+    def test_single_back_adjacent(self):
+        line = "..39#...."
+        should_value = 39
+
+        enginetrouble = EngineTrouble()
+        enginetrouble.parse_line(0, line)
+        is_value =  enginetrouble.get_back_adjacent()
+
+        self.assertEqual(should_value, is_value)
+
 if __name__ == '__main__':
     unittest.main()
