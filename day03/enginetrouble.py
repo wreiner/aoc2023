@@ -1,10 +1,10 @@
 import re
 
-class EngineTrouble:
-    symbols = {}
-    numbers = []
-
-    sum = 0
+class EngineTrouble():
+    def __init__(self):
+        self.symbols = {}
+        self.numbers = []
+        self.sum = 0
 
     def parse_line(self, line_number, line):
         number = {
@@ -54,8 +54,10 @@ class EngineTrouble:
                     }
 
         # add stragglers
-        number["end"] = col
-        self.numbers.append(number)
+        if (number["value"] != ""):
+            print("in stragglers")
+            number["end"] = col
+            self.numbers.append(number)
 
     def get_front_adjacent(self):
         print(self.symbols)
