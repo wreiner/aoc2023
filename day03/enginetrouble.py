@@ -81,3 +81,45 @@ class EngineTrouble():
     def get_back_adjacent(self):
         return self.sum
 
+    def is_symbol_adjecent(self, linenum, checkstart, checkend):
+        print(f"checking if symbol on {linenum} between {checkstart} and {checkend}")
+        for element in self.symbols[linenum]:
+            if element >= checkstart and element <= checkend:
+                print("found")
+                return True
+        return False
+
+    def get_vertical_adjacent(self):
+        print(f"symbols: {self.symbols}")
+        print(f"numbers: {self.numbers}")
+
+        for numberob in self.numbers:
+            print(f"working on {numberob}")
+
+            linenum = numberob["line"]
+            startcol = numberob["start"]
+            endcol = numberob["end"]
+            print(f"linenum {linenum} | {startcol}:{endcol}")
+
+            # check above
+            if linenum != 0:
+                checkline = linenum - 1
+                checkstart = startcol - 1
+                checkend = endcol + 1
+
+                if self.is_symbol_adjecent(checkline, checkstart, checkend):
+                    self.sum += int(numberob["value"])
+                    continue
+
+            # check below
+            if linenum < max(self.symbols, key=int):
+                checkline = linenum + 1
+                checkstart = startcol - 1
+                checkend = endcol + 1
+
+                if self.is_symbol_adjecent(checkline, checkstart, checkend):
+                    self.sum += int(numberob["value"])
+                    continue
+
+        return self.sum
+
