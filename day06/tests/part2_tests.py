@@ -1,0 +1,25 @@
+import unittest
+
+from moveit_part2 import MoveIt
+
+class Testing(unittest.TestCase):
+    def test_test_input(self):
+        filename = "inputs/test-input"
+        number_of_possible_moves = 71503
+
+        moveit = MoveIt()
+        is_value = moveit.part_one_get_product_of_possible_moves(filename)
+
+        self.assertEqual(number_of_possible_moves, is_value)
+
+    def test_complete_input(self):
+        filename = "inputs/complete-input"
+        number_of_possible_moves = 29891250
+
+        moveit = MoveIt()
+        is_value = moveit.part_one_get_product_of_possible_moves(filename)
+
+        self.assertEqual(number_of_possible_moves, is_value)
+
+if __name__ == '__main__':
+    unittest.main()
